@@ -693,8 +693,68 @@
       color: rgba(255,255,255,0.7);
     }
 
-    .gallery-marquee {
+    .gallery-content {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+      align-items: center;
       margin-top: 40px;
+    }
+
+    .gallery-video {
+      flex-shrink: 0;
+    }
+
+    .video-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+    }
+
+    .video-replay {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: 2px solid var(--color-primario);
+      border-radius: 30px;
+      padding: 10px 20px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-titulos);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .video-replay.active {
+      display: flex;
+    }
+
+    .video-replay:hover {
+      background: var(--color-primario);
+      color: var(--color-secundario);
+    }
+
+    .video-replay i {
+      font-size: 1rem;
+    }
+
+    .gallery-marquee {
       overflow: hidden;
       mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
@@ -737,6 +797,52 @@
 
     .gallery-slide:hover img {
       transform: scale(1.05);
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .gallery-content {
+        grid-template-columns: 200px 1fr;
+        gap: 20px;
+      }
+
+      .gallery-slide {
+        width: 280px;
+      }
+
+      .gallery-slide img {
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .gallery-video {
+        order: 1;
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      .video-replay {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+      }
+
+      .gallery-marquee {
+        order: 2;
+      }
+
+      .gallery-slide {
+        width: 260px;
+      }
+
+      .gallery-slide img {
+        height: 190px;
+      }
     }
 
     /* Lightbox */
@@ -1128,8 +1234,8 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .gallery-slide img {
-        height: 220px;
+      .marquee-slide img {
+        height: 120px;
       }
 
       .about-features {
@@ -1174,14 +1280,6 @@
 
       .services-grid {
         grid-template-columns: 1fr;
-      }
-
-      .gallery-slide {
-        width: 280px;
-      }
-
-      .gallery-slide img {
-        height: 200px;
       }
 
       .about-features {
@@ -1244,7 +1342,7 @@
     <div class="hero-container">
       <!-- LADO IZQUIERDO - CONTENIDO PRINCIPAL -->
       <div class="hero-left" data-aos="fade-right" data-aos-duration="1000">
-        <span class="hero-badge">Desde 1988 — Más de 10 años de experiencia</span>
+        <span class="hero-badge">Más de 10 años de experiencia</span>
         <h1 class="hero-title">
           Reformas <span>integrales</span> con garantía y transparencia
         </h1>
@@ -1303,7 +1401,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrapper" data-aos="fade-right" data-aos-duration="800">
-          <img src="multi-sobre-nosotros.jpg" alt="Equipo de Multiservicios y Reformas 1988" class="about-image" id="about-img">
+          <img src="multi-1.jpg" alt="Equipo de Multiservicios y Reformas 1988" class="about-image" id="about-img">
           <div class="about-image-accent"></div>
         </div>
         
@@ -1376,11 +1474,25 @@
         <h2>Nuestro <span>trabajo</span></h2>
         <p>Así quedan las cosas cuando alguien se toma en serio lo que hace.</p>
       </div>
-    </div>
-    
-    <div class="gallery-marquee">
-      <div class="gallery-track" id="gallery-track">
-        <!-- Gallery slides rendered by JavaScript -->
+      
+      <div class="gallery-content">
+        <div class="gallery-video" data-aos="fade-right" data-aos-duration="800">
+          <div class="video-wrapper">
+            <video id="reformas-video" muted playsinline>
+              <source src="videomultiweb.mp4" type="video/mp4">
+            </video>
+            <button class="video-replay" id="video-replay" aria-label="Ver de nuevo">
+              <i class="fas fa-redo-alt"></i>
+              <span>Ver de nuevo</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="gallery-marquee">
+          <div class="gallery-track" id="gallery-track">
+            <!-- Gallery slides rendered by JavaScript -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1525,7 +1637,6 @@
       // ── IMÁGENES ───────────────────────────────────────
       logoUrl:              "logo.png",
       imagenHero:           "multi-1.jpg",
-      imagenSobreNosotros:  "multi-sobre-nosotros.jpg",
 
       // ── SERVICIOS ──────────────────────────────────────
       servicios: [
@@ -1575,6 +1686,10 @@
         "multi-4.jpg",
         "multi-5.jpg",
         "multi-6.jpg",
+        "multi-7.jpg",
+        "multi-8.jpg",
+        "multi-9.jpg",
+        "multi-10.jpg",
       ],
 
       // ── FAQ ────────────────────────────────────────────
@@ -1637,6 +1752,21 @@
       
       // Renderizar galería
       renderGallery();
+      
+      // Video replay
+      const video = document.getElementById('reformas-video');
+      const replayBtn = document.getElementById('video-replay');
+      if (video && replayBtn) {
+        video.play().catch(() => {});
+        video.addEventListener('ended', () => {
+          replayBtn.classList.add('active');
+        });
+        replayBtn.addEventListener('click', () => {
+          replayBtn.classList.remove('active');
+          video.currentTime = 0;
+          video.play();
+        });
+      }
       
       // Renderizar FAQ
       renderFAQ();
