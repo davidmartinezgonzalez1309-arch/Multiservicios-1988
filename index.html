@@ -693,68 +693,8 @@
       color: rgba(255,255,255,0.7);
     }
 
-    .gallery-content {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 30px;
-      align-items: center;
-      margin-top: 40px;
-    }
-
-    .gallery-video {
-      flex-shrink: 0;
-    }
-
-    .video-wrapper {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .video-wrapper video {
-      width: 100%;
-      height: auto;
-      display: block;
-      aspect-ratio: 9 / 16;
-      object-fit: cover;
-    }
-
-    .video-replay {
-      position: absolute;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.7);
-      color: white;
-      border: 2px solid var(--color-primario);
-      border-radius: 30px;
-      padding: 10px 20px;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-titulos);
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .video-replay.active {
-      display: flex;
-    }
-
-    .video-replay:hover {
-      background: var(--color-primario);
-      color: var(--color-secundario);
-    }
-
-    .video-replay i {
-      font-size: 1rem;
-    }
-
     .gallery-marquee {
+      margin-top: 40px;
       overflow: hidden;
       mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
@@ -799,13 +739,159 @@
       transform: scale(1.05);
     }
 
+    /* ═══════════════════════════════════════════════════
+       ANTES / DESPUÉS
+    ═══════════════════════════════════════════════════ */
+    .antes-despues {
+      padding: 100px 0;
+      background: var(--color-fondo);
+    }
+
+    .antes-despues .section-header h2 {
+      color: var(--color-secundario);
+    }
+
+    .antes-despues .section-header p {
+      color: var(--color-gris);
+    }
+
+    .ad-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 50px;
+    }
+
+    .ad-video-col {
+      position: sticky;
+      top: 100px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 12px;
+    }
+
+    .ad-video-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .ad-video-wrapper video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .ad-video-replay {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: 2px solid var(--color-primario);
+      border-radius: 30px;
+      padding: 10px 20px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-titulos);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .ad-video-replay.active {
+      display: flex;
+    }
+
+    .ad-video-replay:hover {
+      background: var(--color-primario);
+      color: var(--color-secundario);
+    }
+
+    .ad-video-thumbs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ad-video-thumb {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .ad-video-thumb.active {
+      border-color: var(--color-primario);
+    }
+
+    .ad-video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ad-pairs {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .ad-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .ad-image {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ad-image img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      background: rgba(0,0,0,0.05);
+      display: block;
+      border-radius: 10px;
+    }
+
+    .ad-image-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-titulos);
+    }
+
+    .ad-image-tag.antes {
+      background: var(--color-secundario);
+    }
+
+    .ad-image-tag.despues {
+      background: var(--color-primario);
+      color: var(--color-secundario);
+    }
+
     /* Mobile */
     @media (max-width: 900px) {
-      .gallery-content {
-        grid-template-columns: 200px 1fr;
-        gap: 20px;
-      }
-
       .gallery-slide {
         width: 280px;
       }
@@ -813,35 +899,37 @@
       .gallery-slide img {
         height: 220px;
       }
-    }
 
-    @media (max-width: 768px) {
-      .gallery-content {
-        grid-template-columns: 1fr;
+      .ad-layout {
+        grid-template-columns: 1fr 1fr;
         gap: 24px;
       }
 
-      .gallery-video {
-        order: 1;
-        max-width: 220px;
+      .ad-video-col {
+        grid-template-columns: 200px 1fr;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ad-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .ad-video-col {
+        position: static;
+        grid-template-columns: 1fr;
+        max-width: 350px;
         margin: 0 auto;
       }
 
-      .video-replay {
-        padding: 8px 16px;
-        font-size: 0.8rem;
+      .ad-pair {
+        grid-template-columns: 1fr;
       }
 
-      .gallery-marquee {
-        order: 2;
-      }
-
-      .gallery-slide {
-        width: 260px;
-      }
-
-      .gallery-slide img {
-        height: 190px;
+      .ad-image img {
+        height: 200px;
       }
     }
 
@@ -1332,6 +1420,7 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#galeria">Galería</a></li>
+        <li><a href="#transformaciones">Transformaciones</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto" class="navbar-cta"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
       </ul>
@@ -1486,24 +1575,51 @@
         <h2>Nuestro <span>trabajo</span></h2>
         <p>Así quedan las cosas cuando alguien se toma en serio lo que hace.</p>
       </div>
+    </div>
+    
+    <div class="gallery-marquee">
+      <div class="gallery-track" id="gallery-track">
+        <!-- Gallery slides rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       ANTES / DESPUÉS
+  ═══════════════════════════════════════════════════ -->
+  <section class="antes-despues" id="transformaciones">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Así queda tu <span>reforma</span></h2>
+        <p>Resultados reales de proyectos que hablan por sí solos.</p>
+      </div>
       
-      <div class="gallery-content">
-        <div class="gallery-video" data-aos="fade-right" data-aos-duration="800">
-          <div class="video-wrapper">
-            <video id="reformas-video" muted playsinline>
+      <div class="ad-layout">
+        <div class="ad-video-col" data-aos="fade-right" data-aos-duration="800">
+          <div class="ad-video-wrapper">
+            <video id="ad-video" muted playsinline>
               <source src="videomultiweb.mp4" type="video/mp4">
             </video>
-            <button class="video-replay" id="video-replay" aria-label="Ver de nuevo">
+            <button class="ad-video-replay" id="ad-video-replay" aria-label="Ver de nuevo">
               <i class="fas fa-redo-alt"></i>
               <span>Ver de nuevo</span>
             </button>
           </div>
+          <div class="ad-video-thumbs">
+            <div class="ad-video-thumb active" data-video="videomultiweb.mp4">
+              <img src="antes video 1.jpeg" alt="Antes 1">
+            </div>
+            <div class="ad-video-thumb" data-video="videomultiweb.mp4">
+              <img src="antes video 2.jpeg" alt="Antes 2">
+            </div>
+            <div class="ad-video-thumb" data-video="videomultiweb.mp4">
+              <img src="antes video 3.jpeg" alt="Antes 3">
+            </div>
+          </div>
         </div>
         
-        <div class="gallery-marquee">
-          <div class="gallery-track" id="gallery-track">
-            <!-- Gallery slides rendered by JavaScript -->
-          </div>
+        <div class="ad-pairs" id="ad-pairs">
+          <!-- Before/After pairs rendered by JavaScript -->
         </div>
       </div>
     </div>
@@ -1704,6 +1820,16 @@
         "multi-10.jpg",
       ],
 
+      // ── ANTES / DESPUÉS ────────────────────────────────
+      antesDespues: [
+        { antes: "antes 1.jpeg", despues: "despues 1.jpeg" },
+        { antes: "antes 2.jpeg", despues: "despues 2.jpeg" },
+        { antes: "antes 2.1.jpeg", despues: "despues 2.1.jpeg" },
+        { antes: "antes 3.jpeg", despues: "despues 3.jpeg" },
+        { antes: "antes 4.jpeg", despues: "despues 4.jpeg" },
+        { antes: "antes 5.jpeg", despues: "despues 5.jpeg" },
+      ],
+
       // ── FAQ ────────────────────────────────────────────
       faq: [
         { pregunta: "¿Hacéis presupuestos sin compromiso?", respuesta: "Sí, siempre. Vemos tu proyecto, te explicamos qué incluye y te damos un precio cerrado. Sin sorpresas ni letra pequeña. Si decides no seguir, no pasa nada." },
@@ -1765,18 +1891,21 @@
       // Renderizar galería
       renderGallery();
       
-      // Video replay
-      const video = document.getElementById('reformas-video');
-      const replayBtn = document.getElementById('video-replay');
-      if (video && replayBtn) {
-        video.play().catch(() => {});
-        video.addEventListener('ended', () => {
-          replayBtn.classList.add('active');
+      // Renderizar antes/después
+      renderAntesDespues();
+      
+      // Video replay (antes/después)
+      const adVideo = document.getElementById('ad-video');
+      const adReplayBtn = document.getElementById('ad-video-replay');
+      if (adVideo && adReplayBtn) {
+        adVideo.play().catch(() => {});
+        adVideo.addEventListener('ended', () => {
+          adReplayBtn.classList.add('active');
         });
-        replayBtn.addEventListener('click', () => {
-          replayBtn.classList.remove('active');
-          video.currentTime = 0;
-          video.play();
+        adReplayBtn.addEventListener('click', () => {
+          adReplayBtn.classList.remove('active');
+          adVideo.currentTime = 0;
+          adVideo.play();
         });
       }
       
@@ -1842,6 +1971,26 @@
           openLightbox(index);
         });
       });
+    }
+
+    function renderAntesDespues() {
+      const container = document.getElementById('ad-pairs');
+      if (!container) return;
+
+      const pairsHTML = CONFIG.antesDespues.map((par, index) => `
+        <div class="ad-pair" data-aos="fade-up" data-aos-delay="${index * 100}">
+          <div class="ad-image">
+            <img src="${par.antes}" alt="Antes de la reforma">
+            <span class="ad-image-tag antes">Antes</span>
+          </div>
+          <div class="ad-image">
+            <img src="${par.despues}" alt="Después de la reforma">
+            <span class="ad-image-tag despues">Después</span>
+          </div>
+        </div>
+      `).join('');
+
+      container.innerHTML = pairsHTML;
     }
 
     function openLightbox(index) {
