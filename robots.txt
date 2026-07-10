@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /videomultiweb.mp4
+
+Sitemap: https://multiservicios1988.es/sitemap.xml
