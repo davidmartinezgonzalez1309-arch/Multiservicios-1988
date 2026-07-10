@@ -1268,6 +1268,11 @@
       transition: color var(--transition-normal);
     }
 
+    .footer-col ul li:not(:has(a)) {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
     .footer-col ul li a:hover {
       color: var(--color-primario);
     }
@@ -1473,6 +1478,10 @@
         gap: 16px;
       }
 
+      .cta-info-item {
+        white-space: nowrap;
+      }
+
       .hero-buttons {
         flex-direction: column;
         align-items: center;
@@ -1480,8 +1489,11 @@
 
       .btn {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         justify-content: center;
+        white-space: nowrap;
+        font-size: 0.8rem;
+        padding: 12px 16px;
       }
     }
   </style>
@@ -1502,7 +1514,7 @@
     "email": "",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Avenida Francisco Doctor Gaspar y Huelves, S/N",
+      "streetAddress": "Avenida Doctor Gaspar Huelves, S/N",
       "addressLocality": "Albacete",
       "addressRegion": "Albacete",
       "postalCode": "02006",
@@ -1781,14 +1793,14 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrapper" data-aos="fade-right" data-aos-duration="800">
-          <img src="multi-1.jpg" alt="Equipo de Multiservicios y Reformas 1988" class="about-image" id="about-img">
+          <img src="multi 13.jpg" alt="Equipo de Multiservicios y Reformas 1988" class="about-image" id="about-img">
           <div class="about-image-accent"></div>
         </div>
         
         <div class="about-content" data-aos="fade-left" data-aos-duration="800">
           <h2>Más que reformas, <span>cumplimos</span> lo que prometemos</h2>
           <p class="about-text">
-            Empezamos porque nos enfadaba ver cómo funcionaba el sector: presupuestos que se disparan, plazos que nadie respeta y acabados que decepcionan. En Reformas 1988 decidimos hacer las cosas de otra manera. Cada proyecto que salde nuestras manos lleva nuestro nombre, y eso para nosotros significa algo.
+            Empezamos porque nos enfadaba ver cómo funcionaba el sector: presupuestos que se disparan, plazos que nadie respeta y acabados que decepcionan. En Reformas 1988 decidimos hacer las cosas de otra manera. Cada proyecto que sale de nuestras manos lleva nuestro nombre, y eso para nosotros significa algo.
           </p>
           <p class="about-text">
             Trabajamos en Albacete, Valencia, Alicante, Madrid y Murcia. No somos una franquicia ni una empresa de mil empleados. Somos un equipo que se juega el tipo en cada obra, porque sabemos que tu hogar no es una inversión cualquiera.
@@ -1991,7 +2003,7 @@
           </div>
           <div class="cta-info-item">
             <i class="fas fa-location-dot"></i>
-            <span>Av. Francisco Dr. Gaspar y Huelves, Albacete</span>
+            <span>Av. Doctor Gaspar Huelves, Albacete</span>
           </div>
           <div class="cta-info-item">
             <i class="fas fa-map-marker-alt"></i>
@@ -2028,8 +2040,8 @@
           <ul>
             <li><a href="tel:614662381"><i class="fas fa-phone"></i> 614 66 23 81</a></li>
             <li><a href="https://wa.me/34614662381" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-            <li><i class="fas fa-location-dot"></i> Av. Francisco Dr. Gaspar y Huelves, Albacete</li>
-            <li><i class="fas fa-clock"></i> Lun - Dom: 8:00 - 20:30</li>
+            <li style="color:rgba(255,255,255,0.6)"><i class="fas fa-location-dot"></i> Av. Doctor Gaspar Huelves, Albacete</li>
+            <li style="color:rgba(255,255,255,0.6)"><i class="fas fa-clock"></i> Lun - Dom: 8:00 - 20:30</li>
           </ul>
         </div>
       </div>
@@ -2063,7 +2075,7 @@
       eslogan:         "Reformas integrales con garantía y transparencia",
       descripcion:     "Más de 10 años de experiencia en reformas de calidad. Cumplimiento de plazos, presupuestos transparentes y cercanía con el cliente.",
       ciudad:          "Albacete",
-      direccion:       "Avenida Francisco Doctor Gaspar y Huelves, S/N",
+      direccion:       "Avenida Doctor Gaspar Huelves, S/N",
       horario:         "8:00 - 20:30 (horario de contacto)",
 
       // ── CONTACTO ───────────────────────────────────────
