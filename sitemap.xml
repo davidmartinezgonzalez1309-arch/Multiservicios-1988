@@ -9,17 +9,9 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Reformas en Albacete (landing optimizada) -->
-  <url>
-    <loc>https://multiservicios1988.es/reformas-integrales-albacete</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
   <!-- Reformas en Valencia -->
   <url>
-    <loc>https://multiservicios1988.es/reformas-valencia</loc>
+    <loc>https://multiservicios1988.es/reformas-valencia.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -27,7 +19,7 @@
 
   <!-- Reformas en Alicante -->
   <url>
-    <loc>https://multiservicios1988.es/reformas-alicante</loc>
+    <loc>https://multiservicios1988.es/reformas-alicante.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -35,7 +27,7 @@
 
   <!-- Reformas en Murcia -->
   <url>
-    <loc>https://multiservicios1988.es/reformas-murcia</loc>
+    <loc>https://multiservicios1988.es/reformas-murcia.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -43,7 +35,7 @@
 
   <!-- Reformas en Madrid -->
   <url>
-    <loc>https://multiservicios1988.es/reformas-madrid</loc>
+    <loc>https://multiservicios1988.es/reformas-madrid.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
