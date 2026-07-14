@@ -1524,9 +1524,268 @@
         padding: 12px 16px;
       }
     }
+
+    /* ═══════════════════════════════════════════════════
+       BARRA DE CONFIANZA STICKY
+    ═══════════════════════════════════════════════════ */
+    .trust-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      background: var(--color-primario);
+      color: var(--color-secundario);
+      text-align: center;
+      padding: 10px 16px;
+      font-family: var(--font-titulos);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .trust-bar.hidden {
+      transform: translateY(-100%);
+    }
+
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-bar-item i {
+      font-size: 0.9rem;
+    }
+
+    .navbar {
+      top: 38px;
+    }
+
+    .navbar.scrolled {
+      top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .trust-bar { font-size: 0.7rem; gap: 12px; padding: 8px 12px; }
+      .navbar { top: 34px; }
+      .trust-bar-item span { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       POPUP DE SALIDA
+    ═══════════════════════════════════════════════════ */
+    .exit-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .exit-popup-overlay.active {
+      display: flex;
+    }
+
+    .exit-popup {
+      background: var(--color-fondo);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      animation: popupSlide 0.4s ease;
+    }
+
+    @keyframes popupSlide {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .exit-popup-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--color-gris);
+    }
+
+    .exit-popup-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(212, 175, 55, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--color-primario);
+      font-size: 1.5rem;
+    }
+
+    .exit-popup h3 {
+      font-family: var(--font-titulos);
+      font-size: 1.3rem;
+      color: var(--color-secundario);
+      margin-bottom: 12px;
+    }
+
+    .exit-popup p {
+      color: var(--color-gris);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .exit-popup .btn {
+      width: 100%;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       SCROLL TO TOP
+    ═══════════════════════════════════════════════════ */
+    .scroll-top {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      background: var(--color-secundario);
+      color: var(--color-primario);
+      border: 2px solid var(--color-primario);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 899;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      background: var(--color-primario);
+      color: var(--color-secundario);
+      transform: translateY(-3px);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       BREADCRUMBS
+    ═══════════════════════════════════════════════════ */
+    .breadcrumbs {
+      padding: 100px 0 0;
+      background: var(--color-secundario);
+    }
+
+    .breadcrumbs .container {
+      padding-bottom: 12px;
+    }
+
+    .breadcrumbs ol {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumbs li {
+      font-family: var(--font-titulos);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .breadcrumbs li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+
+    .breadcrumbs li a:hover {
+      color: var(--color-primario);
+    }
+
+    .breadcrumbs li:last-child {
+      color: var(--color-primario);
+    }
+
+    .breadcrumbs li::after {
+      content: '/';
+      margin-left: 8px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .breadcrumbs li:last-child::after {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .breadcrumbs { padding-top: 90px; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       CTA MEJORADO
+    ═══════════════════════════════════════════════════ */
+    .cta-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--color-primario);
+      color: var(--color-primario);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-family: var(--font-titulos);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      animation: pulse-urgency 2s infinite;
+    }
+
+    @keyframes pulse-urgency {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(212,175,55,0); }
+    }
   </style>
 </head>
 <body>
+
+  <div class="trust-bar" id="trustBar">
+    <div class="trust-bar-item"><i class="fas fa-shield-halved"></i> <span>Presupuesto sin compromiso</span></div>
+    <div class="trust-bar-item"><i class="fas fa-clock"></i> <span>Respuesta en 24h</span></div>
+    <div class="trust-bar-item"><i class="fas fa-medal"></i> <span>+15 años de experiencia</span></div>
+  </div>
+
+  <div class="exit-popup-overlay" id="exitPopup">
+    <div class="exit-popup">
+      <button class="exit-popup-close" id="exitPopupClose">&times;</button>
+      <div class="exit-popup-icon"><i class="fas fa-headset"></i></div>
+      <h3>Antes de irte...</h3>
+      <p>¿Tienes un proyecto en mente? Dános tus datos y te llamamos sin compromiso para darte el mejor precio.</p>
+      <a href="https://wa.me/34614662381?text=Hola%2C%20quiero%20pedir%20presupuesto%20para%20una%20reforma%20en%20Madrid" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Llámame ahora</a>
+      <a href="tel:+34614662381" class="btn btn-outline" style="margin-top: 10px;"><i class="fas fa-phone"></i> Llamar ahora</a>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -1829,6 +2088,20 @@
        HERO
   ═══════════════════════════════════════════════════ -->
   <section class="hero" id="inicio">
+    <div class="breadcrumbs">
+      <div class="container">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="index.html"><span itemprop="name">Inicio</span></a>
+            <meta itemprop="position" content="1" />
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">Reformas en Madrid</span>
+            <meta itemprop="position" content="2" />
+          </li>
+        </ol>
+      </div>
+    </div>
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-overlay"></div>
 
@@ -2083,6 +2356,7 @@
     <div class="cta-pattern"></div>
     <div class="container">
       <div class="cta-content" data-aos="fade-up">
+        <div class="cta-urgency"><i class="fas fa-fire"></i> Plazas limitadas este mes</div>
         <h2 class="cta-title">¿Listo para <span>reformar</span> en Madrid?</h2>
         <p class="cta-subtitle">
           Cuéntanos qué tienes en mente. Sin compromisos, sin presiones. Solo una conversación entre profesionales y alguien que sabe lo que quiere.
@@ -2286,6 +2560,79 @@
     };
 
     // ═══════════════════════════════════════════════════
+    // BARRA DE CONFIANZA - SE OCULTA AL HACER SCROLL
+    // ═══════════════════════════════════════════════════
+    function initTrustBar() {
+      const trustBar = document.getElementById('trustBar');
+      if (!trustBar) return;
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 50) {
+          trustBar.classList.add('hidden');
+        } else {
+          trustBar.classList.remove('hidden');
+        }
+        lastScroll = currentScroll;
+      });
+    }
+
+    // ═══════════════════════════════════════════════════
+    // POPUP DE SALIDA - APARECE AL SALIR DE LA PÁGINA
+    // ═══════════════════════════════════════════════════
+    function initExitPopup() {
+      const popup = document.getElementById('exitPopup');
+      const closeBtn = document.getElementById('exitPopupClose');
+      if (!popup || !closeBtn) return;
+
+      let hasShown = false;
+
+      document.addEventListener('mouseout', (e) => {
+        if (!e.relatedTarget && !hasShown && window.pageYOffset > 200) {
+          popup.classList.add('active');
+          hasShown = true;
+        }
+      });
+
+      document.addEventListener('mouseleave', (e) => {
+        if (!hasShown && window.pageYOffset > 200) {
+          popup.classList.add('active');
+          hasShown = true;
+        }
+      });
+
+      closeBtn.addEventListener('click', () => {
+        popup.classList.remove('active');
+      });
+
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+          popup.classList.remove('active');
+        }
+      });
+    }
+
+    // ═══════════════════════════════════════════════════
+    // SCROLL TO TOP BUTTON
+    // ═══════════════════════════════════════════════════
+    function initScrollTop() {
+      const scrollTopBtn = document.getElementById('scrollTop');
+      if (!scrollTopBtn) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 400) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+      });
+
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ═══════════════════════════════════════════════════
     // INICIALIZACIÓN
     // ═══════════════════════════════════════════════════
     document.addEventListener('DOMContentLoaded', () => {
@@ -2372,6 +2719,9 @@
 
       // WhatsApp float visibility
       initWhatsAppFloat();
+      initTrustBar();
+      initExitPopup();
+      initScrollTop();
     });
 
     // ═══════════════════════════════════════════════════

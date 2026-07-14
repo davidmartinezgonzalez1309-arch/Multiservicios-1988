@@ -1525,9 +1525,275 @@
         padding: 12px 16px;
       }
     }
+
+    /* ═══════════════════════════════════════════════════
+       BARRA DE CONFIANZA STICKY
+    ═══════════════════════════════════════════════════ */
+    .trust-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      background: var(--color-primario);
+      color: var(--color-secundario);
+      text-align: center;
+      padding: 10px 16px;
+      font-family: var(--font-titulos);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .trust-bar.hidden {
+      transform: translateY(-100%);
+    }
+
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-bar-item i {
+      font-size: 0.9rem;
+    }
+
+    .navbar {
+      top: 38px;
+    }
+
+    .navbar.scrolled {
+      top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .trust-bar { font-size: 0.7rem; gap: 12px; padding: 8px 12px; }
+      .navbar { top: 34px; }
+      .trust-bar-item span { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       POPUP DE SALIDA
+    ═══════════════════════════════════════════════════ */
+    .exit-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .exit-popup-overlay.active {
+      display: flex;
+    }
+
+    .exit-popup {
+      background: var(--color-fondo);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      animation: popupSlide 0.4s ease;
+    }
+
+    @keyframes popupSlide {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .exit-popup-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--color-gris);
+    }
+
+    .exit-popup-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(212, 175, 55, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--color-primario);
+      font-size: 1.5rem;
+    }
+
+    .exit-popup h3 {
+      font-family: var(--font-titulos);
+      font-size: 1.3rem;
+      color: var(--color-secundario);
+      margin-bottom: 12px;
+    }
+
+    .exit-popup p {
+      color: var(--color-gris);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .exit-popup .btn {
+      width: 100%;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       SCROLL TO TOP
+    ═══════════════════════════════════════════════════ */
+    .scroll-top {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      background: var(--color-secundario);
+      color: var(--color-primario);
+      border: 2px solid var(--color-primario);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 899;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      background: var(--color-primario);
+      color: var(--color-secundario);
+      transform: translateY(-3px);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       BREADCRUMBS
+    ═══════════════════════════════════════════════════ */
+    .breadcrumbs {
+      padding: 100px 0 0;
+      background: var(--color-secundario);
+    }
+
+    .breadcrumbs .container {
+      padding-bottom: 12px;
+    }
+
+    .breadcrumbs ol {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumbs li {
+      font-family: var(--font-titulos);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .breadcrumbs li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+
+    .breadcrumbs li a:hover {
+      color: var(--color-primario);
+    }
+
+    .breadcrumbs li:last-child {
+      color: var(--color-primario);
+    }
+
+    .breadcrumbs li::after {
+      content: '/';
+      margin-left: 8px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .breadcrumbs li:last-child::after {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .breadcrumbs { padding-top: 90px; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       CTA MEJORADO
+    ═══════════════════════════════════════════════════ */
+    .cta-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--color-primario);
+      color: var(--color-primario);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-family: var(--font-titulos);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      animation: pulse-urgency 2s infinite;
+    }
+
+    @keyframes pulse-urgency {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(212,175,55,0); }
+    }
   </style>
 </head>
 <body>
+
+  <!-- BARRA DE CONFIANZA -->
+  <div class="trust-bar" id="trust-bar">
+    <div class="trust-bar-item"><i class="fas fa-shield-halved"></i> <span>Garantía en todos los trabajos</span></div>
+    <div class="trust-bar-item"><i class="fas fa-clock"></i> <span>Plazos cumplidos</span></div>
+    <div class="trust-bar-item"><i class="fas fa-file-invoice-dollar"></i> <span>Presupuesto cerrado</span></div>
+    <div class="trust-bar-item"><i class="fab fa-whatsapp"></i> <span>Respuesta en menos de 2h</span></div>
+  </div>
+
+  <!-- POPUP DE SALIDA -->
+  <div class="exit-popup-overlay" id="exit-popup">
+    <div class="exit-popup">
+      <button class="exit-popup-close" id="exit-popup-close">&times;</button>
+      <div class="exit-popup-icon"><i class="fas fa-tag"></i></div>
+      <h3>Presupuesto gratuito sin compromiso</h3>
+      <p>¿Tienes un proyecto en mente? Cuéntanos qué necesitas y te respondemos con un presupuesto cerrado en menos de 24 horas.</p>
+      <a href="https://wa.me/34614662381?text=Hola%2C%20quiero%20pedir%20presupuesto%20para%20una%20reforma" class="btn btn-primary" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Pedir presupuesto gratis
+      </a>
+    </div>
+  </div>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scroll-top" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -1815,6 +2081,20 @@
        HERO
   ═══════════════════════════════════════════════════ -->
   <section class="hero" id="inicio">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <div class="container">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="https://multiservicios1988.es/"><span itemprop="name">Inicio</span></a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">Reformas Integrales en Albacete</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </div>
+    </nav>
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-overlay"></div>
     
@@ -2069,6 +2349,7 @@
     <div class="cta-pattern"></div>
     <div class="container">
       <div class="cta-content" data-aos="fade-up">
+        <div class="cta-urgency"><i class="fas fa-bolt"></i> Respuesta en menos de 24 horas</div>
         <h2 class="cta-title">¿Listo para <span>reformar</span>?</h2>
         <p class="cta-subtitle">
           Cuéntanos qué tienes en mente. Sin compromisos, sin presiones. Solo una conversación entre profesionales y alguien que sabe lo que quiere.
@@ -2360,6 +2641,15 @@
       
       // WhatsApp float visibility
       initWhatsAppFloat();
+
+      // Barra de confianza
+      initTrustBar();
+
+      // Popup de salida
+      initExitPopup();
+
+      // Scroll to top
+      initScrollTop();
     });
 
     // ═══════════════════════════════════════════════════
@@ -2607,6 +2897,74 @@
           whatsappFloat.style.opacity = '1';
           whatsappFloat.style.pointerEvents = 'auto';
         }
+      });
+    }
+
+    // ═══════════════════════════════════════════════════
+    // BARRA DE CONFIANZA - se oculta al hacer scroll
+    // ═══════════════════════════════════════════════════
+    function initTrustBar() {
+      const trustBar = document.getElementById('trust-bar');
+      const navbar = document.getElementById('navbar');
+      if (!trustBar) return;
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 150) {
+          trustBar.classList.add('hidden');
+          navbar.style.top = '0';
+        } else {
+          trustBar.classList.remove('hidden');
+          navbar.style.top = '38px';
+        }
+      });
+    }
+
+    // ═══════════════════════════════════════════════════
+    // POPUP DE SALIDA - aparece al salir de la página
+    // ═══════════════════════════════════════════════════
+    function initExitPopup() {
+      const popup = document.getElementById('exit-popup');
+      const closeBtn = document.getElementById('exit-popup-close');
+      if (!popup) return;
+
+      let shown = false;
+      
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY < 0 && !shown && !sessionStorage.getItem('exitPopupShown')) {
+          popup.classList.add('active');
+          shown = true;
+          sessionStorage.setItem('exitPopupShown', '1');
+        }
+      });
+
+      closeBtn.addEventListener('click', () => {
+        popup.classList.remove('active');
+      });
+
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+          popup.classList.remove('active');
+        }
+      });
+    }
+
+    // ═══════════════════════════════════════════════════
+    // SCROLL TO TOP
+    // ═══════════════════════════════════════════════════
+    function initScrollTop() {
+      const btn = document.getElementById('scroll-top');
+      if (!btn) return;
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      });
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
   </script>
