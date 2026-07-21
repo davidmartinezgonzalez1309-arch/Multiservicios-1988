@@ -1778,6 +1778,163 @@
       0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
       50% { box-shadow: 0 0 0 8px rgba(212,175,55,0); }
     }
+
+    /* ═══════════════════════════════════════════════════
+       CTA STICKY MÓVIL - barra inferior fija
+    ═══════════════════════════════════════════════════ */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 950;
+      background: var(--color-secundario);
+      padding: 10px 16px;
+      gap: 10px;
+      border-top: 2px solid var(--color-primario);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    }
+
+    .sticky-cta .btn {
+      flex: 1;
+      padding: 12px 8px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .sticky-cta { display: flex; }
+      body { padding-bottom: 64px; }
+      .whatsapp-float { bottom: 80px !important; }
+      .scroll-top { bottom: 148px; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       REDES SOCIALES EN HERO - prueba social rápida
+    ═══════════════════════════════════════════════════ */
+    .hero-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-avatars {
+      display: flex;
+    }
+
+    .hero-avatars span {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-primario);
+      color: var(--color-secundario);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-left: -8px;
+      border: 2px solid var(--color-secundario);
+    }
+
+    .hero-avatars span:first-child { margin-left: 0; }
+
+    .hero-social-text {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero-social-text strong {
+      color: var(--color-primario);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       SERVICIOS INTERACTIVOS - hover reveal
+    ═══════════════════════════════════════════════════ */
+    .service-card {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.15);
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+      color: var(--color-primario);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       FAQ MEJORADO - indicador visual
+    ═══════════════════════════════════════════════════ */
+    .faq-question {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .faq-question:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .faq-item.active .faq-question {
+      color: var(--color-primario);
+      border-bottom-color: var(--color-primario);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       FRANJA DE BENEFICIOS RÁPIDOS
+    ═══════════════════════════════════════════════════ */
+    .benefits-strip {
+      background: var(--color-secundario);
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .benefit-item i {
+      font-size: 1.4rem;
+      color: var(--color-primario);
+      flex-shrink: 0;
+    }
+
+    .benefit-item strong {
+      display: block;
+      font-family: var(--font-titulos);
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    .benefit-item span {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    @media (max-width: 900px) {
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .benefits-grid { grid-template-columns: 1fr; gap: 16px; }
+      .benefit-item span { white-space: nowrap; }
+    }
   </style>
 </head>
 <body>
@@ -1807,6 +1964,12 @@
   <button class="scroll-top" id="scroll-top" aria-label="Volver arriba">
     <i class="fas fa-arrow-up"></i>
   </button>
+
+  <!-- CTA STICKY MÓVIL -->
+  <div class="sticky-cta" id="sticky-cta">
+    <a href="tel:614662381" class="btn btn-outline"><i class="fas fa-phone"></i> Llamar</a>
+    <a href="https://wa.me/34614662381?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20reforma" class="btn btn-primary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  </div>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -2141,9 +2304,17 @@
             <span class="hero-stat-label">Clientes satisfechos</span>
           </div>
         </div>
-      </div>
 
-      <!-- LADO DERECHO - MAPA -->
+        <div class="hero-social">
+          <div class="hero-avatars">
+            <span>MA</span>
+            <span>JL</span>
+            <span>CR</span>
+            <span>+</span>
+          </div>
+          <div class="hero-social-text"><strong>+50 familias</strong> ya confían en nosotros</div>
+        </div>
+      </div>
       <div class="hero-right" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
         <div class="mapa-card">
           <div class="mapa-wrapper">
@@ -2164,6 +2335,42 @@
     </div>
 
     <div class="hero-diagonal"></div>
+  </section>
+
+  <!-- FRANJA DE BENEFICIOS RÁPIDOS -->
+  <section class="benefits-strip">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <div>
+            <strong>Presupuesto gratis</strong>
+            <span>Sin compromiso, cerrado y claro</span>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Respuesta en 2h</strong>
+            <span>Te contactamos el mismo día</span>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-shield-halved"></i>
+          <div>
+            <strong>Garantía total</strong>
+            <span>Todos los trabajos con garantía</span>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-users"></i>
+          <div>
+            <strong>+50 familias</strong>
+            <span>Ya confían en nosotros</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════
