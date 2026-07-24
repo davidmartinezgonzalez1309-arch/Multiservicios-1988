@@ -3202,14 +3202,17 @@
           else if (this.closest('.footer')) seccion = 'Footer';
           else if (this.id === 'whatsapp-float') seccion = 'Float WhatsApp';
           else if (this.closest('.exit-popup')) seccion = 'Popup salida';
+          else if (this.closest('.sticky-cta')) seccion = 'Sticky CTA';
 
-          if (typeof gtag === 'function') {
-            gtag('event', 'click_contacto', {
-              tipo_contacto: tipo,
-              seccion: seccion,
-              dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? 'movil' : 'desktop'
-            });
-          }
+          var evento = {
+            event: 'click_contacto',
+            tipo_contacto: tipo,
+            seccion: seccion,
+            dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? 'movil' : 'desktop'
+          };
+
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(evento);
         });
       });
     }
