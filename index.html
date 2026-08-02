@@ -9,13 +9,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="theme-color" content="#D4AF37">
   
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSYH1GXR84"></script>
+  <!-- GA4 se carga dinámicamente tras aceptar cookies -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PSYH1GXR84');
   </script>
   <title>Reformas Integrales Albacete | presupuesto cerrado y garantía</title>
   <meta name="description" content="Reformas integrales en Albacete. Presupuesto cerrado sin sorpresas, plazos garantizados y garantía real. Más de 10 años reformando hogares. Pide tu presupuesto gratis.">
@@ -782,19 +779,18 @@
     }
 
     .ad-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 40px;
     }
 
     .ad-video-col {
-      position: sticky;
-      top: 100px;
-      display: grid;
-      grid-template-columns: 280px 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
     .ad-video-wrapper {
@@ -802,6 +798,8 @@
       border-radius: 12px;
       overflow: hidden;
       background: #000;
+      aspect-ratio: 9 / 16;
+      max-height: 350px;
     }
 
     .ad-video-wrapper video {
@@ -843,7 +841,6 @@
 
     .ad-video-thumbs {
       display: flex;
-      flex-direction: column;
       gap: 10px;
     }
 
@@ -854,6 +851,7 @@
       cursor: pointer;
       border: 2px solid transparent;
       transition: border-color 0.3s ease;
+      height: 60px;
     }
 
     .ad-video-thumb.active {
@@ -868,15 +866,29 @@
     }
 
     .ad-pairs {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .ad-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    .ad-pair:nth-child(odd) {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .ad-pair:nth-child(even) {
+      background: #fff;
+      border: 1px solid var(--color-borde);
     }
 
     .ad-image {
@@ -887,7 +899,7 @@
 
     .ad-image img {
       width: 100%;
-      height: 250px;
+      height: 160px;
       object-fit: contain;
       background: rgba(0,0,0,0.05);
       display: block;
@@ -927,35 +939,40 @@
       }
 
       .ad-layout {
-        grid-template-columns: 1fr 1fr;
         gap: 24px;
       }
 
       .ad-video-col {
-        grid-template-columns: 200px 1fr;
-        gap: 8px;
+        max-width: 100%;
       }
     }
 
     @media (max-width: 768px) {
       .ad-layout {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
       }
 
       .ad-video-col {
-        position: static;
-        grid-template-columns: 1fr;
-        max-width: 350px;
-        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .ad-pairs {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
       }
 
       .ad-pair {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
       }
 
       .ad-image img {
-        height: 200px;
+        height: 120px;
+      }
+
+      .ad-image-tag {
+        font-size: 0.65rem;
+        padding: 2px 8px;
       }
     }
 
@@ -1935,9 +1952,639 @@
       .benefits-grid { grid-template-columns: 1fr; gap: 16px; }
       .benefit-item span { white-space: nowrap; }
     }
+
+    /* ═══════════════════════════════════════════════════
+       BANNER DE COOKIES - RGPD
+    ═══════════════════════════════════════════════════ */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 5000;
+      background: var(--color-secundario);
+      color: #fff;
+      padding: 20px 24px;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.4);
+      display: none;
+      animation: slideUp 0.4s ease;
+    }
+
+    .cookie-banner.active { display: block; }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .cookie-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-text {
+      flex: 1;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+
+    .cookie-text a {
+      color: var(--color-primario);
+      text-decoration: underline;
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cookie-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-family: var(--font-titulos);
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cookie-accept {
+      background: var(--color-primario);
+      color: var(--color-secundario);
+    }
+
+    .cookie-accept:hover {
+      background: var(--color-acento, #F4D03F);
+    }
+
+    .cookie-reject {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    .cookie-reject:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .cookie-inner { flex-direction: column; text-align: center; }
+      .cookie-buttons { width: 100%; }
+      .cookie-btn { flex: 1; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       RESEÑAS DE GOOGLE
+    ═══════════════════════════════════════════════════ */
+    .reviews {
+      padding: 80px 0;
+      background: var(--color-gris-claro);
+    }
+
+    .reviews .section-header h2 span {
+      color: var(--color-primario);
+    }
+
+    .reviews-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .reviews-google {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-titulos);
+      font-size: 0.85rem;
+      color: var(--color-gris);
+    }
+
+    .reviews-google img {
+      height: 20px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--color-fondo);
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid var(--color-borde);
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra-media);
+    }
+
+    .review-stars {
+      color: var(--color-primario);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--color-gris);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-primario);
+      color: var(--color-secundario);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-titulos);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .review-name {
+      font-family: var(--font-titulos);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-secundario);
+    }
+
+    .review-date {
+      font-size: 0.75rem;
+      color: var(--color-gris);
+    }
+
+    .reviews-more {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .reviews-more a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-titulos);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-primario);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .reviews-more a:hover {
+      color: var(--color-secundario);
+    }
+
+    @media (max-width: 900px) {
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 576px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-card { padding: 20px 18px; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       OVERLAY DE PROVINCIA - PASO OBLIGATORIO
+    ═══════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════════════
+       OVERLAY DE PROVINCIA - DISEÑO PREMIUM
+    ═══════════════════════════════════════════════════ */
+    .province-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    body.overlay-active {
+      overflow: hidden !important;
+    }
+
+    .province-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('mapa-reformas-1988.png') center center / cover no-repeat;
+      filter: blur(20px) brightness(0.3);
+      transform: scale(1.1);
+      opacity: 0.5;
+    }
+
+    .province-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+    }
+
+    .province-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .province-box {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 560px;
+      width: 92%;
+      padding: 40px 28px;
+    }
+
+    .province-logo {
+      height: 80px;
+      width: auto;
+      margin-bottom: 8px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .province-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 30px;
+      padding: 6px 16px;
+      font-family: var(--font-titulos);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--color-primario);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .province-badge i {
+      font-size: 0.6rem;
+    }
+
+    .province-title {
+      font-family: var(--font-titulos);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .province-title span {
+      color: var(--color-primario);
+    }
+
+    .province-subtitle {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .province-trust {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .province-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .province-trust-item i {
+      color: var(--color-primario);
+      font-size: 0.8rem;
+    }
+
+    .province-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .province-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 20px 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(8px);
+    }
+
+    .province-card:hover {
+      border-color: var(--color-primario);
+      background: rgba(212, 175, 55, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+    }
+
+    .province-card i {
+      font-size: 1.4rem;
+      color: var(--color-primario);
+    }
+
+    .province-card-name {
+      font-family: var(--font-titulos);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .province-card-desc {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.3;
+    }
+
+    .province-card.albacete {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.04));
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      flex-direction: row;
+      gap: 16px;
+      padding: 22px 24px;
+    }
+
+    .province-card.albacete:hover {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.08));
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+    }
+
+    .province-card.albacete .province-card-name {
+      font-size: 1.05rem;
+    }
+
+    .province-card.albacete .province-card-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .province-services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .province-service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 16px 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-titulos);
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #fff;
+      backdrop-filter: blur(8px);
+    }
+
+    .province-service-card i {
+      font-size: 1.3rem;
+      color: var(--color-primario);
+    }
+
+    .province-service-card:hover {
+      border-color: var(--color-primario);
+      background: rgba(212, 175, 55, 0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.12);
+    }
+
+    .province-step.hidden {
+      display: none;
+    }
+
+    .province-back {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      font-family: var(--font-titulos);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .province-back:hover {
+      color: var(--color-primario);
+    }
+
+    .province-footer {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 8px;
+    }
+
+    .province-footer a {
+      color: var(--color-primario);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .province-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .province-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-family: var(--font-titulos);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      margin-top: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .province-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
+
+    .province-whatsapp i {
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 480px) {
+      .province-grid { grid-template-columns: 1fr; gap: 10px; }
+      .province-card.albacete { flex-direction: column; gap: 8px; }
+      .province-title { font-size: 1.4rem; }
+      .province-logo { height: 65px; }
+      .province-trust { gap: 14px; }
+      .province-services-grid { gap: 8px; }
+      .province-service-card { padding: 14px 10px; font-size: 0.75rem; }
+    }
+
   </style>
 </head>
-<body>
+<body class="overlay-active">
+
+  <!-- OVERLAY DE PROVINCIA - PASO OBLIGATORIO -->
+  <div class="province-overlay" id="province-overlay">
+    <div class="province-box">
+      <img src="logo.png" alt="Multiservicios y Reformas 1988" class="province-logo">
+      <div class="province-badge"><i class="fas fa-shield-halved"></i> Desde 1988</div>
+
+      <!-- PASO 1: PROVINCIA -->
+      <div class="province-step" id="step-provincia">
+        <h1 class="province-title">¿Dónde necesitas tu <span>reforma</span>?</h1>
+        <p class="province-subtitle">Elige tu provincia y te mostramos precios, plazos y trabajos reales de tu zona</p>
+        <div class="province-trust">
+          <div class="province-trust-item"><i class="fas fa-check-circle"></i> Presupuesto gratis</div>
+          <div class="province-trust-item"><i class="fas fa-check-circle"></i> Sin compromiso</div>
+          <div class="province-trust-item"><i class="fas fa-check-circle"></i> Respuesta en 2h</div>
+        </div>
+        <div class="province-grid">
+          <button class="province-card albacete" data-provincia="albacete">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <div class="province-card-name">Albacete</div>
+              <div class="province-card-desc">Nuestra sede — respuesta inmediata</div>
+            </div>
+          </button>
+          <button class="province-card" data-provincia="valencia">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <div class="province-card-name">Valencia</div>
+              <div class="province-card-desc">Capital y provincia</div>
+            </div>
+          </button>
+          <button class="province-card" data-provincia="alicante">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <div class="province-card-name">Alicante</div>
+              <div class="province-card-desc">Costa Blanca</div>
+            </div>
+          </button>
+          <button class="province-card" data-provincia="murcia">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <div class="province-card-name">Murcia</div>
+              <div class="province-card-desc">Capital y provincia</div>
+            </div>
+          </button>
+          <button class="province-card" data-provincia="madrid">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <div class="province-card-name">Madrid</div>
+              <div class="province-card-desc">Capital y comunidad</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- PASO 2: SERVICIO -->
+      <div class="province-step hidden" id="step-servicio">
+        <h1 class="province-title">¿Qué necesitas <span>arreglar</span>?</h1>
+        <p class="province-subtitle" id="servicio-provincia-label">Selecciona el servicio para tu zona</p>
+        <div class="province-services-grid">
+          <button class="province-service-card" data-servicio="reforma-bano">
+            <i class="fas fa-bath"></i>
+            <span>Baño</span>
+          </button>
+          <button class="province-service-card" data-servicio="reforma-cocina">
+            <i class="fas fa-utensils"></i>
+            <span>Cocina</span>
+          </button>
+          <button class="province-service-card" data-servicio="pintura">
+            <i class="fas fa-paint-roller"></i>
+            <span>Pintura</span>
+          </button>
+          <button class="province-service-card" data-servicio="albanileria">
+            <i class="fas fa-hard-hat"></i>
+            <span>Albañilería</span>
+          </button>
+          <button class="province-service-card" data-servicio="fontaneria">
+            <i class="fas fa-faucet"></i>
+            <span>Fontanería</span>
+          </button>
+          <button class="province-service-card" data-servicio="electricidad">
+            <i class="fas fa-bolt"></i>
+            <span>Electricidad</span>
+          </button>
+          <button class="province-service-card" data-servicio="reforma-completa">
+            <i class="fas fa-home"></i>
+            <span>Reforma completa</span>
+          </button>
+          <button class="province-service-card" data-servicio="otro">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>Otro</span>
+          </button>
+        </div>
+        <button class="province-back" id="province-back">
+          <i class="fas fa-arrow-left"></i> Volver
+        </button>
+      </div>
+
+      <p class="province-footer">¿No encuentras tu zona?</p>
+      <a href="https://wa.me/34614662381" class="province-whatsapp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+      </a>
+    </div>
+  </div>
 
   <!-- BARRA DE CONFIANZA -->
   <div class="trust-bar" id="trust-bar">
@@ -1945,6 +2592,20 @@
     <div class="trust-bar-item"><i class="fas fa-clock"></i> <span>Plazos cumplidos</span></div>
     <div class="trust-bar-item"><i class="fas fa-file-invoice-dollar"></i> <span>Presupuesto cerrado</span></div>
     <div class="trust-bar-item"><i class="fab fa-whatsapp"></i> <span>Respuesta en menos de 2h</span></div>
+  </div>
+
+  <!-- BANNER DE COOKIES - RGPD -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        Utilizamos cookies para analizar el tráfico de la web y mejorar tu experiencia. Al aceptar, se activará Google Analytics para medir visitas y uso del sitio. Puedes gestionar tu preferencia en cualquier momento.
+        <a href="politica-cookies.html">Más información</a>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-accept" id="cookie-accept">Aceptar</button>
+        <button class="cookie-btn cookie-reject" id="cookie-reject">Rechazar</button>
+      </div>
+    </div>
   </div>
 
   <!-- POPUP DE SALIDA -->
@@ -2445,6 +3106,96 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════
+       RESEÑAS DE GOOGLE
+  ═══════════════════════════════════════════════════ -->
+  <section class="reviews" id="resenas">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Lo que dicen nuestros <span>clientes</span></h2>
+        <p>5 estrellas en Google. Reseñas reales de personas reales.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Excelente trabajo! Reparación de chimenea, muy responsable y puntual. 100% recomendado."</p>
+          <div class="review-author">
+            <div class="review-avatar">MR</div>
+            <div>
+              <div class="review-name">Marlon Rosas</div>
+              <div class="review-date">Hace 4 días</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Me hizo en el local el techo y desmontable un día antes del plazo. El mejor precio de los 4 presupuestos que pedí. Muy profesional y limpio todo."</p>
+          <div class="review-author">
+            <div class="review-avatar">DJ</div>
+            <div>
+              <div class="review-name">DjBoodii</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Empresa profesional, los contraté para una reforma de un baño y cumplieron los plazos e hicieron todo lo que acordamos."</p>
+          <div class="review-author">
+            <div class="review-avatar">JG</div>
+            <div>
+              <div class="review-name">Javi Garcia</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Muy satisfecha, desde la atención hasta el trabajo realizado."</p>
+          <div class="review-author">
+            <div class="review-avatar">CG</div>
+            <div>
+              <div class="review-name">Carmen Gonzalez</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Muy contento del trabajo de reforma hecho en mi casa. Cumplieron en tiempo, modo y forma con el presupuesto. Tengo otra casa y sin duda les volveré a llamar. Muy recomendable."</p>
+          <div class="review-author">
+            <div class="review-avatar">JS</div>
+            <div>
+              <div class="review-name">Juan Hilario Sanchez</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-more" data-aos="fade-up">
+        <a href="https://g.page/r/multiservicios1988/review" target="_blank" rel="noopener">
+          Ver todas las reseñas en Google <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
        GALERÍA
   ═══════════════════════════════════════════════════ -->
   <section class="gallery" id="galeria">
@@ -2636,6 +3387,11 @@
       
       <div class="footer-bottom" id="footer-copyright">
         <!-- Copyright rendered by JavaScript -->
+        <div style="margin-top: 12px;">
+          <a href="aviso-legal.html" style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 12px;">Aviso Legal</a>
+          <a href="politica-privacidad.html" style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 12px;">Política de Privacidad</a>
+          <a href="politica-cookies.html" style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 12px;">Política de Cookies</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -2862,6 +3618,9 @@
       // WhatsApp float visibility
       initWhatsAppFloat();
 
+      // Consentimiento de cookies
+      initCookieConsent();
+
       // Barra de confianza
       initTrustBar();
 
@@ -2913,7 +3672,7 @@
       if (!container) return;
 
       const pairsHTML = CONFIG.antesDespues.map((par, index) => `
-        <div class="ad-pair" data-aos="fade-up" data-aos-delay="${index * 100}">
+        <div class="ad-pair">
           <div class="ad-image">
             <img src="${par.antes}" alt="Antes de la reforma">
             <span class="ad-image-tag antes">Antes</span>
@@ -3189,6 +3948,52 @@
     }
 
     // ═══════════════════════════════════════════════════
+    // CONSENTIMIENTO DE COOKIES - RGPD
+    // ═══════════════════════════════════════════════════
+    function initCookieConsent() {
+      var banner = document.getElementById('cookie-banner');
+      var acceptBtn = document.getElementById('cookie-accept');
+      var rejectBtn = document.getElementById('cookie-reject');
+      var consent = localStorage.getItem('cookie_consent');
+
+      if (consent === null && banner) {
+        banner.classList.add('active');
+      }
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+          localStorage.setItem('cookie_consent', 'accepted');
+          banner.classList.remove('active');
+          loadGA4();
+        });
+      }
+
+      if (rejectBtn) {
+        rejectBtn.addEventListener('click', function() {
+          localStorage.setItem('cookie_consent', 'rejected');
+          banner.classList.remove('active');
+        });
+      }
+
+      if (consent === 'accepted') {
+        loadGA4();
+      }
+    }
+
+    function loadGA4() {
+      if (document.getElementById('ga4-script')) return;
+      var s = document.createElement('script');
+      s.id = 'ga4-script';
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PSYH1GXR84';
+      document.head.appendChild(s);
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', 'G-PSYH1GXR84');
+      };
+    }
+
+    // ═══════════════════════════════════════════════════
     // TRACKING DE CLICKS - WhatsApp y Teléfono
     // ═══════════════════════════════════════════════════
     function initClickTracking() {
@@ -3219,6 +4024,79 @@
 
     // Llamada al cargar
     initClickTracking();
+
+    // ═══════════════════════════════════════════════════
+    // OVERLAY PROVINCIA → SERVICIO (2 pasos)
+    // ═══════════════════════════════════════════════════
+    var overlay = document.getElementById('province-overlay');
+    var stepProvincia = document.getElementById('step-provincia');
+    var stepServicio = document.getElementById('step-servicio');
+    var servicioLabel = document.getElementById('servicio-provincia-label');
+    var provinciaSeleccionada = '';
+
+    var provincias = {
+      albacete: { page: 'index.html', label: 'Albacete' },
+      valencia: { page: 'reformas-valencia.html', label: 'Valencia' },
+      alicante: { page: 'reformas-alicante.html', label: 'Alicante' },
+      murcia:   { page: 'reformas-murcia.html', label: 'Murcia' },
+      madrid:   { page: 'reformas-madrid.html', label: 'Madrid' }
+    };
+
+    var serviciosHash = {
+      'reforma-bano': 'servicios',
+      'reforma-cocina': 'servicios',
+      'pintura': 'servicios',
+      'albanileria': 'servicios',
+      'fontaneria': 'servicios',
+      'electricidad': 'servicios',
+      'reforma-completa': 'servicios',
+      'otro': 'contacto'
+    };
+
+    function abrirContenido() {
+      document.body.classList.remove('overlay-active');
+      window.scrollTo(0, 0);
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+    }
+
+    // Paso 1: click provincia → paso 2
+    document.querySelectorAll('#step-provincia .province-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        provinciaSeleccionada = this.dataset.provincia;
+        servicioLabel.textContent = '¿Qué necesitas en ' + provincias[provinciaSeleccionada].label + '?';
+        stepProvincia.classList.add('hidden');
+        stepServicio.classList.remove('hidden');
+      });
+    });
+
+    // Paso 2: click servicio → redirigir
+    document.querySelectorAll('#step-servicio .province-service-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var servicio = this.dataset.servicio;
+        var provincia = provincias[provinciaSeleccionada];
+
+        if (provinciaSeleccionada === 'albacete') {
+          sessionStorage.removeItem('scrollTo');
+          document.body.classList.remove('overlay-active');
+          overlay.classList.add('hidden');
+          window.scrollTo(0, 0);
+          if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+          }
+        } else {
+          sessionStorage.setItem('scrollTo', serviciosHash[servicio] || 'servicios');
+          window.location.href = provincia.page;
+        }
+      });
+    });
+
+    // Botón volver
+    document.getElementById('province-back').addEventListener('click', function() {
+      stepServicio.classList.add('hidden');
+      stepProvincia.classList.remove('hidden');
+    });
   </script>
 </body>
 </html>

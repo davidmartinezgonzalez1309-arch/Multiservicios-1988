@@ -7,17 +7,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="theme-color" content="#D4AF37">
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSYH1GXR84"></script>
+  <!-- GA4 se carga dinámicamente tras aceptar cookies -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PSYH1GXR84');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reformas Integrales Valencia | presupuesto cerrado gratis</title>
-  <meta name="description" content="Reformas integrales en Valencia capital y provincia. Presupuesto cerrado, plazos garantizados y acabados de calidad. Pide tu presupuesto gratis sin compromiso.">
+  <title>Reformas Integrales en Valencia | Equipo propio y presupuesto cerrado</title>
+  <meta name="description" content="Reformas integrales en Valencia. Trabajamos con equipo propio desde Albacete, nos desplazamos a toda la provincia. Presupuesto cerrado y sin sorpresas.">
   <meta name="keywords" content="reformas valencia, reformas integrales valencia, reformar piso valencia, reforma baño valencia, reforma cocina valencia, empresa reformas valencia, albañilería valencia, fontanería valencia, electricidad valencia, pladur valencia, pintura valencia, presupuesto reforma valencia, reformas torrent, reformas gandía, reformas alzira, reformas xàtiva, reformas ontinyent, reformas alcoi, reformas sueca, reformas paiporta, reformas manises, reformas paterna, reformas sagunto, reformas utiel, reformas requena, reformas oliva, reformas cullera, reformas carcaixent, reformas albaida, reformas enguera, reformas canals, reformas algemesí, reformas rocafort, reformas xirivella, reformas catadau, reformas alaquàs, reformas sedaví, reformas massanassa, reformas picanya, reformas miraflores, reformas albal">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Multiservicios y Reformas 1988">
@@ -46,8 +43,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- AOS.js -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
 
   <style>
     /* ═══════════════════════════════════════════════════
@@ -563,6 +559,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .about-feature {
@@ -781,19 +779,18 @@
     }
 
     .ad-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 40px;
     }
 
     .ad-video-col {
-      position: sticky;
-      top: 100px;
-      display: grid;
-      grid-template-columns: 280px 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
     .ad-video-wrapper {
@@ -801,6 +798,8 @@
       border-radius: 12px;
       overflow: hidden;
       background: #000;
+      aspect-ratio: 9 / 16;
+      max-height: 350px;
     }
 
     .ad-video-wrapper video {
@@ -842,7 +841,6 @@
 
     .ad-video-thumbs {
       display: flex;
-      flex-direction: column;
       gap: 10px;
     }
 
@@ -853,6 +851,7 @@
       cursor: pointer;
       border: 2px solid transparent;
       transition: border-color 0.3s ease;
+      height: 60px;
     }
 
     .ad-video-thumb.active {
@@ -867,15 +866,29 @@
     }
 
     .ad-pairs {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .ad-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    .ad-pair:nth-child(odd) {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .ad-pair:nth-child(even) {
+      background: #fff;
+      border: 1px solid var(--color-borde);
     }
 
     .ad-image {
@@ -926,35 +939,40 @@
       }
 
       .ad-layout {
-        grid-template-columns: 1fr 1fr;
         gap: 24px;
       }
 
       .ad-video-col {
-        grid-template-columns: 200px 1fr;
-        gap: 8px;
+        max-width: 100%;
       }
     }
 
     @media (max-width: 768px) {
       .ad-layout {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
       }
 
       .ad-video-col {
-        position: static;
-        grid-template-columns: 1fr;
-        max-width: 350px;
-        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .ad-pairs {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
       }
 
       .ad-pair {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
       }
 
       .ad-image img {
-        height: 200px;
+        height: 120px;
+      }
+
+      .ad-image-tag {
+        font-size: 0.65rem;
+        padding: 2px 8px;
       }
     }
 
@@ -1892,6 +1910,168 @@
       .benefits-grid { grid-template-columns: 1fr; gap: 16px; }
       .benefit-item span { white-space: nowrap; }
     }
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 5000;
+      background: var(--color-secundario);
+      color: #fff;
+      padding: 20px 24px;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.4);
+      display: none;
+      animation: slideUp 0.4s ease;
+    }
+    .cookie-banner.active { display: block; }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .cookie-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cookie-text {
+      flex: 1;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+    .cookie-text a { color: var(--color-primario); text-decoration: underline; }
+    .cookie-buttons { display: flex; gap: 10px; flex-shrink: 0; }
+    .cookie-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-family: var(--font-titulos);
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .cookie-accept { background: var(--color-primario); color: var(--color-secundario); }
+    .cookie-accept:hover { background: var(--color-acento, #F4D03F); }
+    .cookie-reject { background: rgba(255,255,255,0.1); color: #fff; }
+    .cookie-reject:hover { background: rgba(255,255,255,0.2); }
+    @media (max-width: 768px) {
+      .cookie-inner { flex-direction: column; text-align: center; }
+      .cookie-buttons { width: 100%; }
+      .cookie-btn { flex: 1; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       RESEÑAS DE GOOGLE
+    ═══════════════════════════════════════════════════ */
+    .reviews {
+      padding: 80px 0;
+      background: var(--color-gris-claro);
+    }
+
+    .reviews .section-header h2 span {
+      color: var(--color-primario);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--color-fondo);
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid var(--color-borde);
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .review-stars {
+      color: var(--color-primario);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--color-gris);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-primario);
+      color: var(--color-secundario);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-titulos);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .review-name {
+      font-family: var(--font-titulos);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-secundario);
+    }
+
+    .review-date {
+      font-size: 0.75rem;
+      color: var(--color-gris);
+    }
+
+    .reviews-more {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .reviews-more a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-titulos);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-primario);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .reviews-more a:hover {
+      color: var(--color-secundario);
+    }
+
+    @media (max-width: 900px) {
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 576px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-card { padding: 20px 18px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1900,6 +2080,20 @@
     <div class="trust-bar-item"><i class="fas fa-shield-halved"></i> <span>Presupuesto sin compromiso</span></div>
     <div class="trust-bar-item"><i class="fas fa-clock"></i> <span>Respuesta en 24h</span></div>
     <div class="trust-bar-item"><i class="fas fa-medal"></i> <span>+15 años de experiencia</span></div>
+  </div>
+
+  <!-- BANNER DE COOKIES - RGPD -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        Utilizamos cookies para analizar el tráfico de la web y mejorar tu experiencia. Al aceptar, se activará Google Analytics para medir visitas y uso del sitio.
+        <a href="politica-cookies.html">Más información</a>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-accept" id="cookie-accept">Aceptar</button>
+        <button class="cookie-btn cookie-reject" id="cookie-reject">Rechazar</button>
+      </div>
+    </div>
   </div>
 
   <div class="exit-popup-overlay" id="exitPopup">
@@ -2317,10 +2511,7 @@
         <div class="about-content" data-aos="fade-left" data-aos-duration="800">
           <h2>Más que reformas, <span>cumplimos</span> lo que prometemos</h2>
           <p class="about-text">
-            Empezamos porque nos enfadaba ver cómo funcionaba el sector: presupuestos que se disparan, plazos que nadie respeta y acabados que decepcionan. En Reformas 1988 decidimos hacer las cosas de otra manera. Cada proyecto que sale de nuestras manos lleva nuestro nombre, y eso para nosotros significa algo.
-          </p>
-          <p class="about-text">
-            Trabajamos en Valencia, Alicante, Albacete y Murcia. No somos una franquicia ni una empresa de mil empleados. Somos un equipo que se juega el tipo en cada obra, porque sabemos que tu hogar no es una inversión cualquiera.
+            En Multiservicios y Reformas 1988 llevamos más de una década reformando viviendas en Valencia capital y provincia. No somos una franquicia ni una empresa de mil empleados: somos un equipo que se desplaza desde Albacete con todos los materiales y herramientas necesarias. Coordinamos cada detalle para que tú no tengas que preocuparte de nada. La primera visita la hacemos presencial para ver el estado real del espacio, y el presupuesto te llega cerrado en menos de 48 horas — sin sorpresas, sin letra pequeña. Trabajamos en Valencia capital, Torrent, Gandía, Alzira, Xàtiva y toda la provincia.
           </p>
           <div class="about-features">
             <div class="about-feature">
@@ -2369,6 +2560,96 @@
 
       <div class="services-grid" id="services-grid">
         <!-- Services will be rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       RESEÑAS DE GOOGLE
+  ═══════════════════════════════════════════════════ -->
+  <section class="reviews" id="resenas">
+    <div class="container">
+      <div class="section-header">
+        <h2>Lo que dicen nuestros <span>clientes</span></h2>
+        <p>5 estrellas en Google. Reseñas reales de personas reales.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Excelente trabajo! Reparación de chimenea, muy responsable y puntual. 100% recomendado."</p>
+          <div class="review-author">
+            <div class="review-avatar">MR</div>
+            <div>
+              <div class="review-name">Marlon Rosas</div>
+              <div class="review-date">Hace 4 días</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Me hizo en el local el techo y desmontable un día antes del plazo. El mejor precio de los 4 presupuestos que pedí. Muy profesional y limpio todo."</p>
+          <div class="review-author">
+            <div class="review-avatar">DJ</div>
+            <div>
+              <div class="review-name">DjBoodii</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Empresa profesional, los contraté para una reforma de un baño y cumplieron los plazos e hicieron todo lo que acordamos."</p>
+          <div class="review-author">
+            <div class="review-avatar">JG</div>
+            <div>
+              <div class="review-name">Javi Garcia</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Muy satisfecha, desde la atención hasta el trabajo realizado."</p>
+          <div class="review-author">
+            <div class="review-avatar">CG</div>
+            <div>
+              <div class="review-name">Carmen Gonzalez</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Muy contento del trabajo de reforma hecho en mi casa. Cumplieron en tiempo, modo y forma con el presupuesto. Tengo otra casa y sin duda les volveré a llamar. Muy recomendable."</p>
+          <div class="review-author">
+            <div class="review-avatar">JS</div>
+            <div>
+              <div class="review-name">Juan Hilario Sanchez</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-more">
+        <a href="https://g.page/r/multiservicios1988/review" target="_blank" rel="noopener">
+          Ver todas las reseñas en Google <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -2565,6 +2846,11 @@
 
       <div class="footer-bottom" id="footer-copyright">
         <!-- Copyright rendered by JavaScript -->
+        <div style="margin-top: 12px;">
+          <a href="aviso-legal.html" style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 12px;">Aviso Legal</a>
+          <a href="politica-privacidad.html" style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 12px;">Política de Privacidad</a>
+          <a href="politica-cookies.html" style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 12px;">Política de Cookies</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -2573,9 +2859,6 @@
   <a href="https://wa.me/34614662381?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20una%20reforma%20en%20Valencia" class="whatsapp-float" id="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
-
-  <!-- AOS.js -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script>
     const CONFIG = {
@@ -2806,16 +3089,12 @@
       renderFAQ();
       renderFooter();
 
-      AOS.init({
-        once: true,
-        offset: 80,
-      });
-
       initNavbar();
       initMobileMenu();
       initLightbox();
       initFAQAccordion();
       initWhatsAppFloat();
+      initCookieConsent();
       initTrustBar();
       initExitPopup();
       initScrollTop();
@@ -3045,6 +3324,52 @@
     }
 
     // ═══════════════════════════════════════════════════
+    // ═══════════════════════════════════════════════════
+    // CONSENTIMIENTO DE COOKIES - RGPD
+    // ═══════════════════════════════════════════════════
+    function initCookieConsent() {
+      var banner = document.getElementById('cookie-banner');
+      var acceptBtn = document.getElementById('cookie-accept');
+      var rejectBtn = document.getElementById('cookie-reject');
+      var consent = localStorage.getItem('cookie_consent');
+
+      if (consent === null && banner) {
+        banner.classList.add('active');
+      }
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+          localStorage.setItem('cookie_consent', 'accepted');
+          banner.classList.remove('active');
+          loadGA4();
+        });
+      }
+
+      if (rejectBtn) {
+        rejectBtn.addEventListener('click', function() {
+          localStorage.setItem('cookie_consent', 'rejected');
+          banner.classList.remove('active');
+        });
+      }
+
+      if (consent === 'accepted') {
+        loadGA4();
+      }
+    }
+
+    function loadGA4() {
+      if (document.getElementById('ga4-script')) return;
+      var s = document.createElement('script');
+      s.id = 'ga4-script';
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PSYH1GXR84';
+      document.head.appendChild(s);
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', 'G-PSYH1GXR84');
+      };
+    }
+
     // TRACKING DE CLICKS - WhatsApp y Teléfono
     // ═══════════════════════════════════════════════════
     function initClickTracking() {
@@ -3074,6 +3399,15 @@
     }
 
     initClickTracking();
+
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    var scrollTarget = sessionStorage.getItem('scrollTo');
+    if (scrollTarget) {
+      sessionStorage.removeItem('scrollTo');
+    }
   </script>
 </body>
 </html>
